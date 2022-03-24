@@ -1,0 +1,83 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h>
+#include <malloc.h>
+#define _CRT_SECURE_NO_WARNINGS
+
+template <class Key>
+
+void insertSort(Key * array, int low, int high) {
+  
+  for (int i = low+1; i <= high; i++) {
+    Key temp = array[i]; 
+    int j;
+    for (j = i-1; j >= low && array[j] > temp; j--) {
+      array[j+1] = array[j];
+    }
+    array[j+1] = temp;
+  }
+}
+int * creatArr( int size,int N, int M);
+void printArr( int *p, int size)
+{
+     for (int i = 0; i < size; ++i)
+    {
+        printf ("%i " ,*(p+i));
+    }
+        printf ("\n\n");
+} 
+ 
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    srand(time(NULL));
+    int * vec;
+    int a, size,N,M, num;
+    printf ( "Введите размер массива : ");
+    scanf ("%i",&size);
+    
+    printf("Выберете ввод вручную или случайные числа. 1 - случайно, 2 - сами.");
+    scanf("%i", &a);
+    switch(a)
+    {
+        case 1:
+        {
+             for (int i = 0; i < size; i++) { 
+                vec[i] = rand() % 100000;
+                std::cout << vec[i] << ",";
+            }
+            break;
+        }
+        
+        case 2:
+        {
+            printf("Введите числа вручную : ");
+            for (int i = 0; i < size; i++) { 
+                scanf ("%i",&vec[i]);
+            }
+            insertSort(vec,0,size);
+            printArr(vec,size);
+            
+            free(vec);
+            getchar();
+            return 0;
+        }
+    }
+    
+}
+ 
+int * creatArr( int size, int N, int M)
+{
+    int * p;
+    const int Start = N;
+    const int End = M;
+    p =  (int*)malloc(size * sizeof(int));
+    for (int i = 0; i < size; ++i)
+    {
+        p[i] = Start + rand() % (End-Start+1);
+        printf("%i ", p[i]);
+    }
+        printf ("\n\n");
+    return p;   
+}
