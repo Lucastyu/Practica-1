@@ -27,7 +27,7 @@ int main() {
 	int N, k, g;
 	int ar[30];
 	string line, a;
-	ifstream f("C://Users//Admin//OneDrive//Рабочий стол//group.txt");
+	ifstream f("C://Users//tyutyu//OneDrive//Рабочий стол//tete.txt");
 	cout << "ASCII код\n : ";
 	k = 0;
 	while (f >> N) {
