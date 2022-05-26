@@ -27,7 +27,7 @@ int main() {
 	int N, k, g;
 	int ar[30];
 	string line, a;
-	ifstream f("C://Users//tyutyu//OneDrive//Рабочий стол//tete.txt");
+	ifstream f("untitled");
 	cout << "ASCII код\n : ";
 	k = 0;
 	while (f >> N) {
@@ -44,11 +44,11 @@ int main() {
 		cout << y[i] << "";
 	}
 	cout << endl;
-	ofstream out("C://dvoich.txt", ios::binary | ios::out);
+	ofstream out("dvoich", ios::binary | ios::out);
 	out.write((char*)&y, sizeof y);
 	out.close();
 
-	ifstream in("C://Users//Admin//OneDrive//Рабочий стол//group_bi.txt", ios::binary | ios::in);
+	ifstream in("olol", ios::binary | ios::in);
 	in.read((char*)&x, sizeof x);
 	in.close();
 	cout << "Данные из файла:\n";
