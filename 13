@@ -1,78 +1,59 @@
 #include <iostream>
-#include <string.h>
 
 using namespace std;
 
-int main()
-{
-    setlocale(0,"");
-
-    const int q =4;
-    int mass[q][q];
-    int X;
-
-    cout << "Ðó÷íîé ââîä '0'"<< endl;
-    cout << "Àâòîìàòè÷åñêèé ââîä '1'"<< endl << endl;
-    cin >> X;
-    cout << endl;
-
-    switch (X)
+void main() {
+    setlocale(LC_ALL, "rus");
+    const int a =4;
+    int mass[a][a];
+    int d;
+    cout << "Хочешь ввести вручную или авто? 1- ручная.2-авто" << endl;
+    cin >> d;
+    switch (d)
     {
-    case 0:
-    {
-        for(int i = 0; i < q; i++) {
-            for (int k = 0; k < q; k++) {
-                cout << "Ââîä ãðàôîâ: a[" << i << "][" << k << "] ";
-                cin >> mass[i][k];
-            }
-        }
-        break;
-    }
-
     case 1:
     {
-        for (int i = 0; i < q; i++) {
-            for (int k = 0; k < q; k++) {
-                mass[i][k]=rand() % 10;
+        for(int i = 0; i < a; i++) {
+            for (int j = 0; j < a; j++) {
+                cout << "Введите графы a[" << i << "][" << j << "] ";
+                cin >> mass[i][j];
+            }
+        }
+        break;
+    }
+    case 2:
+    {
+        for (int i = 0; i < a; i++) {
+            for (int j = 0; j < a; j++) {
+                mass[i][j]=rand() % 10;
             }
         }
         break;
     }
     }
-
-    for (int i = 0; i < q; i++)
+   
+    for (int i = 0; i < a; i++)
     {
-        for (int k = 0; k < q; k++)
+        for (int j = 0; j < a; j++)
         {
-            cout << mass[i][k] << " ";
+            cout << mass[i][j] << " ";
         }
         cout << endl;
     }
-
-    cout << endl;
-
-    int g = 7;
-    bool* post = new bool[g];
-    memset(post, false, sizeof(bool) * g);
-    post[0] = true;
-
-    for (int l = 0; l < g - 1; l++)
-    {
-        int mini2 = -1, mini1 = -1;
-        for (int i = 0; i < g; i++)
-            if (post[i])
-            {
-                for (int k = 0; k < g; k++)
-                {
-                    if (!post[k] && mass[i][k] > 0 && (mini1 == -1 || mass[i][k] < mass[mini1][mini2]))
-                    {
-                        mini1 = i, mini2 = k;
-                    }
-                }
-            }
-        post[mini2] = true;
-        cout << mini1 << " >>> " << mini2 << endl;
+    int n = 7;
+    bool* to_sto_posetili = new bool[n];
+    memset(to_sto_posetili, false, sizeof(bool) * n);
+    to_sto_posetili[0] = true;
+    for (int l = 0; l < n - 1; l++) {
+        int minx = -1, miny = -1;
+        for (int i = 0; i < n; i++)
+            if (to_sto_posetili[i])
+                for (int j = 0; j < n; j++)
+                    if (!to_sto_posetili[j] && mass[i][j] > 0 && (miny == -1 || mass[i][j] < mass[miny][minx]))
+                        miny = i, minx = j;
+        to_sto_posetili[minx] = true;
+        cout << miny << "->" << minx << endl;
     }
 
-    return 0;
+    system("pause");
 }
