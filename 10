@@ -43,12 +43,12 @@ int main()
     setlocale(0, "");
     int n;
     int s;
-    cout << "Ââåäèòå êîëè÷åñòâî ýëåìåíòîâ  ";
+    cout << "Сколько элементов:  ";
     cin >> n;
 
     for (int i = 0; i < n; ++i)
     {
-        cout << "ââåäèòå ÷èñëî  ";
+        cout << "Введите число: ";
         cin >> s;
 
         push(s, &tree);
